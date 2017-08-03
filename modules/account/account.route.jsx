@@ -8,7 +8,7 @@ FlowRouter.route("/login", {
     name: 'login',
     action(){
         mount(AccountForm , {
-            content:<Login/>
+            WrapperContent:Login
         });
     }
 });
@@ -17,7 +17,7 @@ FlowRouter.route("/register", {
     name: 'register',
     action(){
         mount(AccountForm , {
-            content:<Register/>
+            WrapperContent:Register
         });
     }
 });
@@ -25,7 +25,7 @@ FlowRouter.route("/preferences", {
    name: 'preferences',
     action(){
        mount(Wrapper, {
-          content:<Preferences/>
+           WrapperContent:Preferences
        });
     }
 });
@@ -33,7 +33,7 @@ FlowRouter.route("/forgotpassword", {
     name: 'forgotpassword',
     action(){
         mount(AccountForm,{
-            content:<ForgotPassword/>
+            WrapperContent:ForgotPassword
         })
     }
 });
@@ -41,7 +41,7 @@ FlowRouter.route("/reset-password/:token", {
     name: 'reset-password',
     action(){
         mount(AccountForm,{
-            content:<ResetPassword/>
+            WrapperContent:ResetPassword
         })
     }
 });

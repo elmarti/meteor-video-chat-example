@@ -7,7 +7,7 @@ FlowRouter.route("/users", {
     name:"users",
     action(){
         mount(Wrapper,{
-            content:<Users/>
+            WrapperContent:Users
         })
     }
 });
@@ -15,7 +15,7 @@ FlowRouter.route("/users_list",{
    name:"users_list",
     action(){
        mount(Wrapper,{
-          content:<CallUsers/>
+           WrapperContent:CallUsers
        });
     }
 });

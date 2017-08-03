@@ -5,15 +5,40 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Layout, Icon } from 'antd';
 const {Content} = Layout;
 import {Header, Footer} from '../';
+import { Video } from '../../video';
 
 class Wrapper extends React.Component{
-
+    constructor(){
+        super();
+        Meteor.VideoCallServices.onReceivePhoneCall = (showChat) => {
+            this.setState({
+                showChat
+            });
+        };
+        this.state = {
+          showChat:false
+        };
+    }
+    callUser(showChat){
+        const user = Meteor.users.findOne({
+            _id:showChat
+        });
+        if(!user || !user.status.online)
+            throw new Meteor.Error(500, "user offline");
+        this.setState({
+            showChat
+        });
+    }
     render(){
+        const { WrapperContent } = this.props;
+
         return (  <Layout className="layout">
             <Header/>
             <Content style={{ padding: '0 50px' }}>
                 <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-                    {this.props.content}
+                    <WrapperContent callUser={this.callUser.bind(this)}/>
+                    <Video show={this.state.showChat} />
+
                 </div>
             </Content>
         <Footer/>
