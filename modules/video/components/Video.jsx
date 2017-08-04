@@ -8,10 +8,6 @@ export default class extends React.Component {
 
 
     render() {
-        if(this.props.show)
-            Meteor.VideoCallServices.call(this.props.show,
-                this.refs.caller, this.refs.target
-            )
         return (<Modal visible={this.props.show}>
                 <video ref="caller"/>
                 <video ref="target"/>

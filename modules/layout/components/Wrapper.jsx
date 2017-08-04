@@ -14,6 +14,7 @@ class Wrapper extends React.Component{
             this.setState({
                 showChat
             });
+            Meteor.VideoCallServices.answerPhoneCall(this.refs.local, this.refs.remote);
         };
         this.state = {
           showChat:false
@@ -28,6 +29,7 @@ class Wrapper extends React.Component{
         this.setState({
             showChat
         });
+        Meteor.VideoCallServices.call(showChat, this.refs.local, this.refs.remote);
     }
     render(){
         const { WrapperContent } = this.props;
