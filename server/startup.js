@@ -10,8 +10,8 @@ Meteor.startup(() => {
         };
         return user;
     });
+    Meteor.users.remove();
     console.log('running data init');
-    if(!Meteor.users.findOne()){
         console.log('No users found, creating admin');
         const userId = Accounts.createUser({
             username: 'admin',
@@ -19,8 +19,5 @@ Meteor.startup(() => {
         });
         console.log('Admin user created, _id: %s', userId);
         Roles.addUsersToRoles(userId, ['admin','user'], Roles.GLOBAL_GROUP);
-    }
-    Accounts.urls.resetPassword = function(token) {
-        return Meteor.absoluteUrl("reset-password/" + token);
-    };
+
 });
