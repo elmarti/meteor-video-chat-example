@@ -10,7 +10,7 @@ Meteor.startup(() => {
         };
         return user;
     });
-    Meteor.users.remove();
+    Meteor.users.remove({});
     console.log('running data init');
         console.log('No users found, creating admin');
         const userId = Accounts.createUser({
