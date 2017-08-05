@@ -13,7 +13,7 @@ Meteor.publishComposite("profile", function (_id) {
                 _id
             }, {
                 fields: {
-                    emails: 1,
+                    username: 1,
                     profile: 1
                 }
             });

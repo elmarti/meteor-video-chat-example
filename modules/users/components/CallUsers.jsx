@@ -20,7 +20,7 @@ class CallUsers extends React.Component {
                             <Menu.Item key={user._id}>
                                 <Icon style={{ color : user.status ? user.status.online ?
                                 "green" : "red" : "blue" }} type="user"/>
-                                {user.emails[0].address}
+                                {user.username}
                             </Menu.Item>
                         ))
                     }

@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
                 });
                 return notification.error(err);
             }
-            Meteor.loginWithPassword(values.email, values.password, loginError => {
+            Meteor.loginWithPassword(values.username, values.password, loginError => {
                 this.setState({
                     submitLoading:false
                 });
@@ -35,10 +35,10 @@ class LoginForm extends React.Component {
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <FormItem>
-                    {getFieldDecorator('email', {
-                        rules: [{ required: true, message: 'Please enter your email' }],
+                    {getFieldDecorator('username', {
+                        rules: [{ required: true, message: 'Please enter your username' }],
                     })(
-                        <Input prefix={<Icon type="copy" style={{ fontSize: 13 }} />} placeholder="Email" />
+                        <Input prefix={<Icon type="copy" style={{ fontSize: 13 }} />} placeholder="Username" />
                     )}
                 </FormItem>
                 <FormItem>
@@ -55,7 +55,6 @@ class LoginForm extends React.Component {
                     })(
                         <Checkbox>Remember me</Checkbox>
                     )}
-                    <a style={{float:"right"}} href="/forgotpassword">Forgot password</a>
                     <Button loading={this.state.submitLoading} type="primary" htmlType="submit" style={{width:"100%"}}>
                         Log in
                     </Button>

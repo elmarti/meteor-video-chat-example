@@ -14,7 +14,7 @@ Meteor.startup(() => {
     if(!Meteor.users.findOne()){
         console.log('No users found, creating admin');
         const userId = Accounts.createUser({
-            email: 'admin@antdexample.com',
+            username: 'admin',
             password: 'password'
         });
         console.log('Admin user created, _id: %s', userId);

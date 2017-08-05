@@ -11,10 +11,10 @@ export default {
      */
     create(values){
         check(values, Object);
-        check(values.email, String);
+        check(values.username, String);
         check(values.password, String);
         const _id = Accounts.createUser({
-            email: values.email,
+            username: values.username,
             password: values.password
         });
         Roles.addUsersToRoles(_id, 'user', Roles.GLOBAL_GROUP);

@@ -6,7 +6,7 @@ tablePublish('users/list', 'User', {}, {
     fields: {
         "profile.createdAt": 1,
         _id: 1,
-        emails: 1,
+        username: 1,
         roles: 1,
         profile: 1
     }
@@ -14,7 +14,7 @@ tablePublish('users/list', 'User', {}, {
 Meteor.publish("all_users", function(){
    return User.find({},{
        fields:{
-           emails:1,
+           username:1,
            _id:1,
            status:1
        }
