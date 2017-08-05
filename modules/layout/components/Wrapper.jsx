@@ -2,10 +2,11 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { Layout, Icon } from 'antd';
+import { Layout, Icon, Modal } from 'antd';
 const {Content} = Layout;
 import {Header, Footer} from '../';
 import { CallUsers } from '../../users';
+const confirm = Modal.confirm;
 
 class Wrapper extends React.Component{
     constructor(){
@@ -15,11 +16,22 @@ class Wrapper extends React.Component{
             {url:'stun:stun2.l.google.com:19302'},
             {url:'stun:stun3.l.google.com:19302'},
             {url:'stun:stun4.l.google.com:19302'}]};
-        Meteor.VideoCallServices.onReceivePhoneCall = (showChat) => {
+        Meteor.VideoCallServices.onReceivePhoneCall = (_id) => {
             this.setState({
-                showChat
+                showChat: _id
             });
-            Meteor.VideoCallServices.answerPhoneCall(this.refs.caller, this.refs.target);
+            const { caller, target } = this.refs;
+            confirm({
+                title: 'You are receiving a phone call',
+                onOk() {
+                    Meteor.VideoCallServices.answerPhoneCall(caller, target);
+                },
+                okText : "Answer",
+                cancelText : "Ignore",
+                onCancel() {
+                    Meteor.VideoCallServices.endPhoneCall();
+                },
+            });
         };
         this.state = {
           showChat:false
