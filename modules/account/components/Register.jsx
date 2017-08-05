@@ -28,7 +28,7 @@ class Register extends React.Component {
                     });
                     return notification.error(error);
                 }
-                Meteor.loginWithPassword(values.email, values.password, loginError => {
+                Meteor.loginWithPassword(values.username, values.password, loginError => {
                    if (loginError)
                        notification.error(loginError);
                 });
@@ -41,10 +41,10 @@ class Register extends React.Component {
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <FormItem>
-                    {getFieldDecorator('email', {
-                        rules: [{required: true, message: 'Please enter your email'}],
+                    {getFieldDecorator('username', {
+                        rules: [{required: true, message: 'Please enter your username'}],
                     })(
-                        <Input prefix={<Icon type="copy" style={{fontSize: 13}}/>} placeholder="Email"/>
+                        <Input prefix={<Icon type="copy" style={{fontSize: 13}}/>} placeholder="Username"/>
                     )}
                 </FormItem>
                 <FormItem>

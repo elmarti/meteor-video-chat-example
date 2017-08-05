@@ -29,19 +29,3 @@ FlowRouter.route("/preferences", {
        });
     }
 });
-FlowRouter.route("/forgotpassword", {
-    name: 'forgotpassword',
-    action(){
-        mount(AccountForm,{
-            WrapperContent:ForgotPassword
-        })
-    }
-});
-FlowRouter.route("/reset-password/:token", {
-    name: 'reset-password',
-    action(){
-        mount(AccountForm,{
-            WrapperContent:ResetPassword
-        })
-    }
-});
