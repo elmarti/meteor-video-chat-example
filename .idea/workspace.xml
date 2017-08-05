@@ -57,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="package.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/packages/meteor-video-chat/package.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+            <state relative-caret-position="36">
+              <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -110,7 +110,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -188,12 +188,12 @@
         <option value="$PROJECT_DIR$/modules/video/components/Video.jsx" />
         <option value="$PROJECT_DIR$/modules/dashboard/components/User.jsx" />
         <option value="$PROJECT_DIR$/packages/meteor-video-chat/services/server.js" />
-        <option value="$PROJECT_DIR$/packages/meteor-video-chat/package.js" />
         <option value="$PROJECT_DIR$/packages/meteor-video-chat/.travis.yml" />
         <option value="$PROJECT_DIR$/packages/meteor-video-chat/services/client.js" />
         <option value="$PROJECT_DIR$/packages/meteor-video-chat/README.md" />
         <option value="$PROJECT_DIR$/modules/layout/components/Wrapper.jsx" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/packages/meteor-video-chat/package.js" />
       </list>
     </option>
   </component>
@@ -479,12 +479,12 @@
       <workItem from="1501785047356" duration="12091000" />
       <workItem from="1501845578635" duration="3189000" />
       <workItem from="1501887141616" duration="6502000" />
-      <workItem from="1501930132019" duration="1987000" />
+      <workItem from="1501930132019" duration="2166000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34772000" />
+    <option name="totallyTimeSpent" value="34951000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-1" width="1368" height="749" extended-state="6" />
@@ -884,14 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packages/meteor-video-chat/package.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packages/meteor-video-chat/services/client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -939,6 +931,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/meteor-video-chat/package.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding />
         </state>
       </provider>
