@@ -7,7 +7,7 @@ FlowRouter.route("/profile", {
    name:"own_profile",
     action(){
        mount(Wrapper, {
-           content: <Profile/>
+           WrapperContent: Profile
        });
     }
 });
@@ -15,7 +15,7 @@ FlowRouter.route("/profile/:id", {
     name:"profile",
     action(){
         mount(Wrapper, {
-            content: <Profile/>
+            WrapperContent: Profile
         });
     }
 });

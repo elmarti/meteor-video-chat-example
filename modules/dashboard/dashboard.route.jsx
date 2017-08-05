@@ -7,7 +7,7 @@ FlowRouter.route("/", {
     name:"dashboard",
     action(){
         mount(Wrapper,{
-            content:<Dashboard/>
+            WrapperContent:Dashboard
         })
     }
 })

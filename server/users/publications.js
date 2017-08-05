@@ -15,7 +15,8 @@ Meteor.publish("all_users", function(){
    return User.find({},{
        fields:{
            emails:1,
-           _id:1
+           _id:1,
+           status:1
        }
    });
 });

@@ -5,14 +5,21 @@ import { User } from '../../../lib/collections';
 import { Menu, Icon, Spin} from 'antd';
 
 class CallUsers extends React.Component {
+    constructor(){
+        super();
+    }
+    callUser( { key } ){
+        this.props.callUser(key);
+    }
     render(){
         return (
             <Spin spinning={this.props.usersLoading}>
-                <Menu>
+                <Menu onClick={this.callUser.bind(this)}>
                     {
                         this.props.users.map(user => (
                             <Menu.Item key={user._id}>
-                                <Icon type="user"/>
+                                <Icon style={{ color : user.status ? user.status.online ?
+                                "green" : "red" : "blue" }} type="user"/>
                                 {user.emails[0].address}
                             </Menu.Item>
                         ))
@@ -25,7 +32,11 @@ class CallUsers extends React.Component {
 
 export default createContainer(()=>{
     const usersLoading = !Meteor.subscribe("all_users").ready();
-    const users = User.find().fetch();
+    const users = User.find({
+        _id:{
+            $ne : Meteor.userId()
+        }
+    }).fetch();
     return {
         usersLoading,
         users

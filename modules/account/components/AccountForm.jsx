@@ -15,6 +15,7 @@ export default class Component extends React.Component {
     }
 
     render() {
+        const { WrapperContent } = this.props;
         return (
             <Layout>
                 <Content>
@@ -23,7 +24,7 @@ export default class Component extends React.Component {
                             <img src="https://via.placeholder.com/100x100"/>
                         </Row>
                         <Row className="main_content">
-                            {this.props.content}
+                            <WrapperContent/>
                         </Row>
                     </Card>
                 </Content>

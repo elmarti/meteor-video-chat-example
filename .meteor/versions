@@ -29,7 +29,7 @@ ecmascript-runtime@0.4.1
 ecmascript-runtime-client@0.4.3
 ecmascript-runtime-server@0.4.1
 ejson@1.0.13
-elmarti:video-chat@0.4.11
+elmarti:video-chat@1.0.1
 email@1.2.3
 es5-shim@4.6.15
 fastclick@1.0.13
@@ -77,6 +77,7 @@ reactive-var@1.0.11
 reload@1.1.11
 retry@1.0.9
 reywood:publish-composite@1.5.2
+rocketchat:streamer@0.5.0
 routepolicy@1.0.12
 service-configuration@1.0.11
 sha@1.0.9
