@@ -5,11 +5,16 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Layout, Icon } from 'antd';
 const {Content} = Layout;
 import {Header, Footer} from '../';
-import { Video } from '../../video';
+import { CallUsers } from '../../users';
 
 class Wrapper extends React.Component{
     constructor(){
         super();
+        Meteor.VideoCallServices.RTCConfiguration = {"iceServers":[{url:'stun:stun.l.google.com:19302'},
+            {url:'stun:stun1.l.google.com:19302'},
+            {url:'stun:stun2.l.google.com:19302'},
+            {url:'stun:stun3.l.google.com:19302'},
+            {url:'stun:stun4.l.google.com:19302'}]};
         Meteor.VideoCallServices.onReceivePhoneCall = (showChat) => {
             this.setState({
                 showChat
@@ -38,7 +43,7 @@ class Wrapper extends React.Component{
             <Header/>
             <Content style={{ padding: '0 50px' }}>
                 <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-                    <WrapperContent callUser={this.callUser.bind(this)}/>
+                    <CallUsers callUser={this.callUser.bind(this)}/>
 
                 </div>
             </Content>

@@ -1,17 +1,10 @@
-[Example site](https://antdmeteor.herokuapp.com) NOTE - EMAIL_URL is not set up, so you cannot reset your password via email
+[Example site](https://meteorvideochat.herokuapp.com)
 
 
-Admin account: admin@antdexample.com password:password
+### Travis CI [![Travis CI status](https://travis-ci.org/elmarti/meteor-video-chat-example.svg?branch=master)](meteor-video-chat-example)
 
 
-
-# Meteor [AntD](https://ant.design/) boilerplate
-
-### Travis CI ![Travis CI status](https://travis-ci.org/elmarti/meteor-antd-boilerplate.svg?branch=master)
-
-
-### waffle.io issue tracking [![Stories in Ready](https://badge.waffle.io/elmarti/meteorantdboilerplate.svg?label=ready&title=Ready)](http://waffle.io/elmarti/meteorantdboilerplate)
-
+### waffle.io issue tracking [![Stories in Ready](https://badge.waffle.io/elmarti/meteor-video-chat-example.svg?label=ready&title=Ready)](http://waffle.io/elmarti/meteor-video-chat-example)
 
 
 A handy boilerplate for Meteor projects with nice, easy to use UI and nifty components.
