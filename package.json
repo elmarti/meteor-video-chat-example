@@ -8,6 +8,7 @@
     "antd": "^2.12.1",
     "babel-runtime": "^6.20.0",
     "bcrypt": "^1.0.2",
+    "clippyjs": "0.0.3",
     "indexof": "0.0.1",
     "meteor-node-stubs": "~0.2.4",
     "react": "^15.6.1",
