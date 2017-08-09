@@ -17,6 +17,9 @@ class Wrapper extends React.Component{
             {url:'stun:stun2.l.google.com:19302'},
             {url:'stun:stun3.l.google.com:19302'},
             {url:'stun:stun4.l.google.com:19302'}]};
+        Meteor.VideoCallServices.onError = err =>{
+          RavenLogger.log(err);
+        };
         Meteor.VideoCallServices.onReceivePhoneCall = (_id) => {
             this.setState({
                 showChat: _id
