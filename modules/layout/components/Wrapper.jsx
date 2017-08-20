@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { Layout, Icon, Modal } from 'antd';
+import { Layout, Icon, Modal, Row, Col, Card } from 'antd';
 const {Content} = Layout;
 import {Header, Footer} from '../';
 import { CallUsers } from '../../users';
@@ -12,14 +12,11 @@ class Wrapper extends React.Component{
     constructor(){
         super();
 
-        Meteor.VideoCallServices.RTCConfiguration = {"iceServers":[{url:'stun:stun.l.google.com:19302'},
-            {url:'stun:stun1.l.google.com:19302'},
-            {url:'stun:stun2.l.google.com:19302'},
-            {url:'stun:stun3.l.google.com:19302'},
-            {url:'stun:stun4.l.google.com:19302'}]};
-        Meteor.VideoCallServices.onError = err =>{
-          RavenLogger.log(err);
+        Meteor.VideoCallServices.onError = (err, data) =>{
+          RavenLogger.log(err,data);
         };
+        Meteor.VideoCallServices.RTCConfiguration = {"iceServers":[{urls:'stun:stun.l.google.com:19302'},
+            {urls:'stun:stun1.l.google.com:19302'}]};
         Meteor.VideoCallServices.onReceivePhoneCall = (_id) => {
             this.setState({
                 showChat: _id
@@ -58,10 +55,32 @@ class Wrapper extends React.Component{
         return (  <Layout className="layout">
             <Header/>
             <Content style={{ padding: '0 50px' }}>
-                <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-                    <CallUsers callUser={this.callUser.bind(this)}/>
+                <Row style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+                    <Col span="11">
+                        <CallUsers callUser={this.callUser.bind(this)}/>
+                    </Col>
+                    <Col span="2"></Col>
+                    <Col span="11">
+                        <Card title="Extension overview">
+                            <Row>
+                                Hey there, thanks for taking a look at this project! I really want to make it the best choice for WebRTC video chat in Meteor, so if you find any issues or want to request any features, do so <a href="https://github.com/elmarti/meteor-video-chat/issues">here</a>.
+                            </Row>
+                            <Row>
+                                If you find any bugs or have any suggestions for this template, log an issue <a href="https://github.com/elmarti/meteor-video-chat-example">here</a>.
+                            </Row>
+                            <Row>
+                                To test video calling, you'll need 2 users and 2 browsers. Once you've logged in to both, you will be able to click the user name to dial the other browser.
+                            </Row>
+                            <p><Icon style={{ color :"blue"}} type="user"/>: never logged in</p>
+                            <p><Icon style={{ color :"red"}} type="user"/>: offline</p>
+                            <p><Icon style={{ color :"green"}} type="user"/>: online</p>
+                            <Row>
+                                User accounts are automatically deleted every day.
+                            </Row>
+                        </Card>
+                    </Col>
 
-                </div>
+                </Row>
             </Content>
         <Footer/>
             <video ref="caller"/>
