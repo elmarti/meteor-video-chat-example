@@ -12,11 +12,12 @@ class Wrapper extends React.Component{
     constructor(){
         super();
 
+    Meteor.VideoCallServices.RTCConfiguration = {"iceServers":[{urls:'stun:stun.l.google.com:19302'},
+    {urls:'stun:stun1.l.google.com:19302'}]};
         Meteor.VideoCallServices.onError = (err, data) =>{
-          RavenLogger.log(err,data);
+          RavenLogger.log(err, data);
         };
-        Meteor.VideoCallServices.RTCConfiguration = {"iceServers":[{urls:'stun:stun.l.google.com:19302'},
-            {urls:'stun:stun1.l.google.com:19302'}]};
+
         Meteor.VideoCallServices.onReceivePhoneCall = (_id) => {
             this.setState({
                 showChat: _id
