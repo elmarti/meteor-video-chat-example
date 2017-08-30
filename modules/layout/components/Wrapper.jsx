@@ -7,6 +7,8 @@ const {Content} = Layout;
 import {Header, Footer} from '../';
 import { CallUsers } from '../../users';
 const confirm = Modal.confirm;
+const error = Modal.error;
+const info = Modal.info;
 
 class Wrapper extends React.Component{
     constructor(){
@@ -14,8 +16,35 @@ class Wrapper extends React.Component{
 
 
         Meteor.VideoCallServices.RTCConfiguration = {"iceServers":[{urls:'stun:stun.l.google.com:19302'}]};
-        Meteor.VideoCallServices.onError = (err, data)=>{
-            RavenLogger.log(err, data);
+        Meteor.VideoCallServices.onError = (err, data) => {
+            switch ( err.name ) {
+                case "NotFoundError":
+                    error({
+                        title : "Could not find webcam",
+                        content : "Please ensure a webcam is connected",
+                        okText : "OK"
+                    });
+                    Meteor.VideoCallServices.endPhoneCall();
+                    break;
+                case "NotReadableError":
+                    error({
+                        title : "Hardware error",
+                        content: "Could not access your device.",
+                        okText : "OK"
+                    });
+                    Meteor.VideoCallServices.endPhoneCall();
+                    break;
+                case "SecurityError":
+                    error({
+                        title : "Security error",
+                        content: "Media support is disabled in this browser.",
+                        okText : "OK"
+                    });
+                    Meteor.VideoCallServices.endPhoneCall();
+                    break;
+                default:
+                    RavenLogger.log(err, data);
+            }
         };
         Meteor.VideoCallServices.onReceivePhoneCall = (_id) => {
             this.setState({
@@ -32,6 +61,12 @@ class Wrapper extends React.Component{
                 onCancel() {
                     Meteor.VideoCallServices.endPhoneCall();
                 },
+            });
+        };
+        Meteor.VideoCallServices.onTerminateCall = () => {
+            Modal.info({
+               title : "Call ended",
+                okText : "OK"
             });
         };
         this.state = {
