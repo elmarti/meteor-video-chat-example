@@ -25,6 +25,14 @@ class Wrapper extends React.Component{
                     });
                     Meteor.VideoCallServices.endPhoneCall();
                     break;
+                case "NotAllowedError":
+                    error({
+                        title : "Not allowed error",
+                        content : "Could not access media device",
+                        okText : "OK"
+                    });
+                    Meteor.VideoCallServices.endPhoneCall();
+                    break;
                 case "NotReadableError":
                     error({
                         title : "Hardware error",
