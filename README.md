@@ -1,7 +1,7 @@
 [Example site](https://meteorvideochat.herokuapp.com)
 
 
-### Travis CI [![Travis CI status](https://travis-ci.org/elmarti/meteor-video-chat-example.svg?branch=master)](meteor-video-chat-example)
+### Travis CI [![Travis CI status](https://travis-ci.org/elmarti/meteor-video-chat-example.svg?branch=master)](https://travis-ci.org/elmarti/meteor-video-chat-example)
 
 
 ### waffle.io issue tracking [![Stories in Ready](https://badge.waffle.io/elmarti/meteor-video-chat-example.svg?label=ready&title=Ready)](http://waffle.io/elmarti/meteor-video-chat-example)
