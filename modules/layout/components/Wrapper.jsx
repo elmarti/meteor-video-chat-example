@@ -14,10 +14,8 @@ class Wrapper extends React.Component{
     constructor(){
         super();
 
-        Meteor.VideoCallServices.RTCConfiguration = {"iceServers":[{urls:'stun:stun.l.google.com:19302'}]};
-
-        Meteor.VideoCallServices.onError = (err, data)=>{
-
+        Meteor.VideoCallServices.RTCConfiguration = {"iceServers":[{urls:'stun:stun.l.google.com:19302'},]};
+        Meteor.VideoCallServices.setOnError((err, data) => {
             switch ( err.name ) {
                 case "NotFoundError":
                     error({
@@ -55,7 +53,7 @@ class Wrapper extends React.Component{
                     console.log(err, data);
                     RavenLogger.log(err, data);
             }
-        };
+        });
         Meteor.VideoCallServices.onReceivePhoneCall = (_id) => {
             this.setState({
                 showChat: _id
