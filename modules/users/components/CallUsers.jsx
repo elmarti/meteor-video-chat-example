@@ -1,5 +1,5 @@
 import React from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { User } from '../../../lib/collections';
 import { Menu, Icon, Spin} from 'antd';
@@ -30,7 +30,7 @@ class CallUsers extends React.Component {
     }
 }
 
-export default createContainer(()=>{
+export default withTracker(()=>{
     const usersLoading = !Meteor.subscribe("all_users").ready();
     const users = User.find({
         _id:{
@@ -41,4 +41,4 @@ export default createContainer(()=>{
         usersLoading,
         users
     };
-}, CallUsers);
+})(CallUsers);
