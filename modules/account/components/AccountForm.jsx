@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Layout, Card, Row } from 'antd';
 const { Content } = Layout;
 
@@ -33,12 +33,12 @@ export default class Component extends React.Component {
     }
 }
 
-const Container =  createContainer(() => {
+const Container =  withTracker(() => {
     const loggedIn =  Meteor.user();
     if (loggedIn)
         FlowRouter.go("/");
     return {};
-}, Component);
+})(Component);
 
 export {
     Container, Component

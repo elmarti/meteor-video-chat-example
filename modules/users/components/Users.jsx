@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
 import { Table } from '../../data';
 import { Icon, Spin, Popconfirm, notification } from 'antd';
 export default class Users extends React.Component{

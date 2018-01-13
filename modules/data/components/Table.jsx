@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Table, Spin, Row, Input } from 'antd';
@@ -43,11 +43,11 @@ DataTable.PropTypes = {
     mapTableData:Function,
     onSearchChange:Function
 };
-export default createContainer((props) => {
+export default withTracker((props) => {
     const subReady = Meteor.subscribe(props.subscription, currentPage.get(), props.searchValue).ready();
     const count = Counts.get(props.subscription + ".count");
     return {
         subReady,
         count
     };
-}, DataTable);
+})(DataTable);
