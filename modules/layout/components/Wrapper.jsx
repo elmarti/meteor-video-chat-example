@@ -75,7 +75,7 @@ class Wrapper extends React.Component {
                 okText: "Answer",
                 cancelText: "Ignore",
                 onCancel() {
-                    Meteor.VideoCallServices.endCall();
+                    Meteor.VideoCallServices.rejectCall();
                 },
             });
         };
@@ -87,6 +87,12 @@ class Wrapper extends React.Component {
             this.setState({
                 showChat: false
             });
+        };
+        Meteor.VideoCallServices.onCallRejected = () => {
+          Modal.error({
+              title: "Call rejected",
+              okText: "OK"
+          })  
         };
         this.state = {
             showChat: false
