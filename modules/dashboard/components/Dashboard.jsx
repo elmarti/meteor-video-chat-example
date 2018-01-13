@@ -3,7 +3,7 @@ import { Admin, User } from '../';
 
 import { DashboardComponent }  from '../';
 import { Roles } from 'meteor/alanning:roles';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 class Component extends React.Component{
     render(){
         if(this.props.isAdmin)
@@ -15,12 +15,12 @@ class Component extends React.Component{
 
 
 
-const Container =  createContainer(() => {
+const Container =  withTracker(() => {
     const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin', Roles.GLOBAL_GROUP);
     return {
         isAdmin
     };
-}, Component);
+})(Component);
 export {
     Container, Component
 }
