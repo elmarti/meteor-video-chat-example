@@ -2,6 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { VideoCallServices } from 'meteor/elmarti:video-chat';
 import { Layout, Icon, Modal, Row, Col, Card } from 'antd';
 const { Content } = Layout;
 import { Header, Footer } from '../';
@@ -13,12 +14,12 @@ const info = Modal.info;
 class Wrapper extends React.Component {
     constructor() {
         super();
-        Meteor.VideoCallServices.init({
+        VideoCallServices.init({
             iceServers: [
                 { url: 'stun:stun.l.google.com:19302' }
             ]
         });
-        Meteor.VideoCallServices.setOnError((err, data) => {
+        VideoCallServices.setOnError((err, data) => {
             switch (err.name) {
                 case "NotFoundError":
                     error({
@@ -26,7 +27,7 @@ class Wrapper extends React.Component {
                         content: "Please ensure a webcam is connected",
                         okText: "OK"
                     });
-                    Meteor.VideoCallServices.endCall();
+                    VideoCallServices.endCall();
                     break;
                 case "NotAllowedError":
                     error({
@@ -34,7 +35,7 @@ class Wrapper extends React.Component {
                         content: "Could not access media device",
                         okText: "OK"
                     });
-                    Meteor.VideoCallServices.endCall();
+                    VideoCallServices.endCall();
                     break;
                 case "NotReadableError":
                     error({
@@ -42,7 +43,7 @@ class Wrapper extends React.Component {
                         content: "Could not access your device.",
                         okText: "OK"
                     });
-                    Meteor.VideoCallServices.endCall();
+                    VideoCallServices.endCall();
                     break;
                 case "SecurityError":
                     error({
@@ -50,14 +51,14 @@ class Wrapper extends React.Component {
                         content: "Media support is disabled in this browser.",
                         okText: "OK"
                     });
-                    Meteor.VideoCallServices.endCall();
+                    VideoCallServices.endCall();
                     break;
                 default:
                     console.log(err, data);
                     RavenLogger.log(err, data);
             }
         });
-        Meteor.VideoCallServices.onReceiveCall = (_id) => {
+        VideoCallServices.onReceiveCall = (_id) => {
             this.setState({
                 showChat: _id
             });
@@ -65,7 +66,7 @@ class Wrapper extends React.Component {
             confirm({
                 title: 'You are receiving a call',
                 onOk() {
-                    Meteor.VideoCallServices.answerCall({
+                    VideoCallServices.answerCall({
                         localElement: caller,
                         remoteElement: target,
                         audio: true,
@@ -75,11 +76,11 @@ class Wrapper extends React.Component {
                 okText: "Answer",
                 cancelText: "Ignore",
                 onCancel() {
-                    Meteor.VideoCallServices.rejectCall();
+                    VideoCallServices.rejectCall();
                 },
             });
         };
-        Meteor.VideoCallServices.onTerminateCall = () => {
+        VideoCallServices.onTerminateCall = () => {
             Modal.info({
                 title: "Call ended",
                 okText: "OK"
@@ -88,7 +89,7 @@ class Wrapper extends React.Component {
                 showChat: false
             });
         };
-        Meteor.VideoCallServices.onCallRejected = () => {
+        VideoCallServices.onCallRejected = () => {
           Modal.error({
               title: "Call rejected",
               okText: "OK"
@@ -108,7 +109,7 @@ class Wrapper extends React.Component {
         this.setState({
             showChat
         });
-        Meteor.VideoCallServices.call({
+        VideoCallServices.call({
             id: showChat,
             localElement: this.refs.caller,
             remoteElement: this.refs.target,
